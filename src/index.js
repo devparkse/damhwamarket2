@@ -1,13 +1,68 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./pages/ErrorPage";
+import Detail from "./pages/Detail";
+import List from "./pages/List";
+import LogIn from "./pages/LogIn";
+import SignUp from "./pages/SignUp";
+import MyPage from "./pages/MyPage";
+import Basket from "./pages/Basket";
+import Members from "./pages/Members";
+import { Provider } from "react-redux";
+import { store } from "./reducer/store";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/listing/:category",
+        element: <List />,
+      },
+      {
+        path: "/detail/:product",
+        element: <Detail />,
+      },
+      {
+        path: "/login",
+        element: <LogIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/mypage",
+        element: <MyPage />,
+      },
+      {
+        path: "/basket",
+        element: <Basket />,
+      },
+    ],
+  },
+  {
+    path: "/members",
+    element: <Members />,
+  },
+]);
+
+const queryClient = new QueryClient();
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );
 
