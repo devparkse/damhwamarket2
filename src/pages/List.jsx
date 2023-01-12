@@ -62,8 +62,10 @@ const List = () => {
   ]);
 
   return (
-    <div>
-      <ListItem />
+    <div className="grid grid-cols-4">
+      {list.map((item, index) => (
+        <ListItem key={index} item={item} />
+      ))}
     </div>
   );
 };

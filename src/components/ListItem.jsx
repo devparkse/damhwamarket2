@@ -1,20 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ListItem = () => {
+const ListItem = ({ item }) => {
+  
   return (
     <div>
       <Link to="/">
-        <img
-          className="w-imgwidth"
-          src="https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg"
-          alt=""
-        />
-        <span className="text-blue">테스트</span>
-        <span className=""></span>
-        <span className=""></span>
-        <span className=""></span>
-        <span className=""></span>
+        <img className="w-imgwidth" src={item.img} alt="상품이미지" />
+        <div className="flex flex-col">
+          <span className="text-neutral-700 font-bold">{item.name}</span>
+          <span className="text-neutral-700 font-bold">{item.price}</span>
+          <div className="flex items-center">
+            <img className="w-3 h-3 mr-1" src="/star.png" alt="별" />
+            <span className="text-neutral-700 text-sm">{item.star}</span>
+          </div>
+          <span className="">{item.subName}</span>
+        </div>
       </Link>
     </div>
   );
