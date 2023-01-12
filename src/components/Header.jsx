@@ -8,7 +8,7 @@ const Header = () => {
             <div className="flex">
                 <img
                     className="w-24 h-7 mr-2"
-                    src="/main-logo.png"
+                    src="/images/main-logo.png"
                     alt="로고"
                 />
                 <h1>담화마켓</h1>
@@ -20,7 +20,7 @@ const Header = () => {
                 <Link to="/login" className="mr-2">
                     로그인
                 </Link>
-                <img src="/basketIcon.png" alt="바구니" />
+                <img src="/images/basketIcon.png" alt="바구니" />
             </div>
         </div>
     );
