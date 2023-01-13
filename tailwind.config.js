@@ -4,11 +4,16 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        imgwidth: "274px",
+        imgwidth: "280px",
       },
       colors: {
-        blue: "#ff0000",
       },
+      fontWeight: {
+        fw800: 800,
+      },
+      fontSize: {
+        fs15: "15px"
+      }
     },
   },
   plugins: [],
