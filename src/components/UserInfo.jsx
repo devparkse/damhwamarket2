@@ -1,42 +1,41 @@
 import React from "react";
-import MyPageOption from "./MyPageOption";
 
 const UserInfo = () => {
     return (
-        <div>
-            <p>회원정보</p>
+        <div className="pl-56 w-5/6">
+            <p className="text-4xl text-amber-400  py-14">회원정보</p>
 
             <div className="flex flex-col">
-                <div>
-                    <label>이메일</label>
+                <div className="my-4 flex justify-center">
+                    <label className="w-28">이메일</label>
+                    <input className="bg-slate-300 rounded " type="text" />
+                </div>
+                <div className="my-4 flex justify-center">
+                    <label className="w-28">비밀번호</label>
+                    <input className="bg-slate-300 rounded " type="text" />
+                </div>
+                <div className="my-4 flex justify-center">
+                    <label className="w-28">비밀번호확인</label>
+                    <input className="bg-slate-300 rounded " type="text" />
+                </div>
+                <div className="my-4 flex justify-center">
+                    <label className="w-28">이름</label>
                     <input className="bg-slate-300 rounded" type="text" />
                 </div>
-                <div>
-                    <label>비밀번호</label>
+                <div className="my-4 flex justify-center">
+                    <label className="w-28">닉네임</label>
                     <input className="bg-slate-300 rounded" type="text" />
                 </div>
-                <div>
-                    <label>비밀번호확인</label>
+                <div className="my-4 flex justify-center">
+                    <label className="w-28">주소</label>
                     <input className="bg-slate-300 rounded" type="text" />
                 </div>
-                <div>
-                    <label>이름</label>
+                <div className="my-4 flex justify-center">
+                    <label className="w-28">휴대폰</label>
                     <input className="bg-slate-300 rounded" type="text" />
                 </div>
-                <div>
-                    <label>닉네임</label>
-                    <input className="bg-slate-300 rounded" type="text" />
-                </div>
-                <div>
-                    <label>주소</label>
-                    <input className="bg-slate-300 rounded" type="text" />
-                </div>
-                <div>
-                    <label>휴대폰</label>
-                    <input className="bg-slate-300 rounded" type="text" />
-                </div>
-                <div>
-                    <label>쿠폰</label>
+                <div className="my-4 flex justify-center">
+                    <label className="w-28">쿠폰</label>
                     <input className="bg-slate-300 rounded" type="text" />
                 </div>
             </div>

@@ -1,12 +1,11 @@
 import React from "react";
-import MyPageOption from "./MyPageOption";
 
 const OrderDtail = () => {
     return (
-        <div>
-            <p>주문내역</p>
+        <div className="pl-56 w-5/6">
+            <p className="text-4xl text-amber-400 py-14">주문내역</p>
 
-            <div>
+            <div className="flex flex-col">
                 <div>
                     <div className="flex border-2 border-red-200">
                         <img src="" alt="z" />
