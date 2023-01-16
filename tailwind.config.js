@@ -5,15 +5,18 @@ module.exports = {
     extend: {
       width: {
         imgwidth: "280px",
+        filterwidth: "350px",
       },
-      colors: {
-      },
+      colors: {},
       fontWeight: {
         fw800: 800,
       },
       fontSize: {
-        fs15: "15px"
-      }
+        fs15: "15px",
+      },
+      spacing: {
+        "84px": "84px",
+      },
     },
   },
   plugins: [],
