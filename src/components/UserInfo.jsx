@@ -2,7 +2,7 @@ import React from "react";
 
 const UserInfo = () => {
     return (
-        <div className="pl-56 w-5/6">
+        <div className="pl-56 w-5/6 min-h-1/2">
             <p className="text-4xl text-amber-400  py-14">회원정보</p>
 
             <div className="flex flex-col">
