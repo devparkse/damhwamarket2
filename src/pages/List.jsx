@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import CategoryBt from "../components/CategoryBt";
-import CategoryFilter from "../components/CategoryFilter";
 import ListItem from "../components/ListItem";
 
 const List = () => {
@@ -63,6 +62,19 @@ const List = () => {
     },
   ]);
 
+  const categoryBtNames = [
+    { name: "도수", option: ["0%-10%", "10%-20%", "20%-30%", "30%이상"] },
+    { name: "단맛", option: ["약한", "중간", "강한"] },
+    { name: "신맛", option: ["약한", "중간", "강한"] },
+    { name: "탄산", option: ["약한", "중간", "강한"] },
+    { name: "원료", option: ["체리", "감귤류", "포도", "베리"] },
+    { name: "상황별", option: ["웃어른", "연인", "친구", "혼자"] },
+    {
+      name: "가격",
+      option: ["~ 1만원", "1만원 ~ 3만원", "3만원 ~ 5만원", "5만원 ~ 10만원"],
+    },
+  ];
+
   return (
     <>
       <div className="border-b">
@@ -77,13 +89,13 @@ const List = () => {
 
       <div className="border-b-8">
         <div className="flex py-4 max-w-screen-xl m-auto">
-          <CategoryBt name="도수" />
-          <CategoryBt name="단맛" />
-          <CategoryBt name="신맛" />
-          <CategoryBt name="탄산" />
-          <CategoryBt name="원료" />
-          <CategoryBt name="상황별" />
-          <CategoryBt name="가격" />
+          {categoryBtNames.map((categoryName, i) => (
+            <CategoryBt
+              name={categoryName.name}
+              option={categoryName.option}
+              key={i}
+            />
+          ))}
         </div>
       </div>
 
