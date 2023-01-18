@@ -26,7 +26,7 @@ const OrderDtail = () => {
                             </div>
                             <div className="flex">
                                 <p className="pr-20">선택 옵션</p>
-                                <p>다복세트 1</p>
+                                <p className="pr-96">다복세트 1</p>
                                 <p>36,900</p>
                             </div>
                         </div>
