@@ -5,6 +5,7 @@ import UserInfo from "../components/UserInfo";
 
 const MyPage = () => {
     const [pageToggle, setPageToggle] = useState(true);
+
     return (
         <div className="flex max-w-screen-xl mx-auto ">
             <MyPageOption changePage={setPageToggle} />

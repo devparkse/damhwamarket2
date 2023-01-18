@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
 const MyPageOption = ({ changePage }) => {
     const handleChangeOrderDetail = () => {
         changePage(true);
+        setActive(true);
     };
     const handleChangeUserInfo = () => {
         changePage(false);
+        setActive(false);
     };
+    const [active, setActive] = useState(true);
     return (
         <div className="flex flex-col justify-center self-center w-32 text-center absolute top-96 left-48 h-28 p-4 mr-4 bg-zinc-100  text-blue">
             <p
                 onClick={handleChangeOrderDetail}
-                className="border-b-3 pb-1 mb-2  border-blue"
+                className={
+                    active ? "pb-1 mb-2 border-b-3 border-blue" : "pb-1 mb-2"
+                }
             >
                 회원정보
             </p>
             <p
                 onClick={handleChangeUserInfo}
-                className="border-b-3 pb-1 mb-2  border-blue"
+                className={
+                    active ? "pb-1 mb-2" : "pb-1 mb-2 border-b-3 border-blue"
+                }
             >
                 주문내역
             </p>
