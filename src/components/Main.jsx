@@ -6,10 +6,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Navigation, Pagination, Keyboard } from "swiper";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
-    <div>
+    <div className="">
       <Swiper
         cssMode={true}
         navigation={true}
@@ -58,6 +59,31 @@ const Main = () => {
           />
         </SwiperSlide>
       </Swiper>
+
+      <div className="flex gap-10 justify-center mt-10">
+        <Link to="#" className="box-border h-55 w-40 bg-green-300">
+          전체보기
+        </Link>
+        <Link to="#" className="box-border h-55 w-40 bg-green-300">
+          탁주
+          <img src={require("../banner/icon_takju.png")} alt="takju" />
+        </Link>
+        <Link to="#" className="box-border h-55 w-40 bg-green-300">
+          청주
+          <img src={require("../banner/icon_cheongju.png")} alt="cheongju" />
+        </Link>
+        <Link to="#" className="box-border h-55 w-40 bg-green-300">
+          증류주
+          <img
+            src={require("../banner/icon_jeungryuju.png")}
+            alt="jeungryuju"
+          />
+        </Link>
+        <Link to="#" className="box-border h-55 w-40 bg-green-300">
+          과실주
+          <img src={require("../banner/icon_gwashilju.png")} alt="gwashilju" />
+        </Link>
+      </div>
     </div>
   );
 };
