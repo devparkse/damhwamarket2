@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GoSearch } from "react-icons/go";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Header = () => {
-    const [text, setText] = useState(0);
+    const { category } = useParams();
+    const [text, setText] = useState("");
     const navigate = useNavigate();
     const handleChange = (e) => {
         setText(e.target.value);
     };
     const handleSubmit = (e) => {
-        navigate(`/listing/${text}`);
+        e.preventDefault();
+        navigate(`listing/${text}`);
     };
+    console.log(category);
+    useEffect(() => setText(category || ""), [category]);
     return (
         <div className="border-b-2">
             <div className="flex justify-around items-center mt-5 max-w-7xl mx-auto ">
@@ -27,6 +31,7 @@ const Header = () => {
                         <input
                             className="w-full h-8 bg-slate-200 rounded"
                             type="text"
+                            value={text}
                             onChange={handleChange}
                         />
                         <GoSearch className="absolute right-10 top-2" />
