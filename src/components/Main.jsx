@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
-    <div className="">
+    <div className="pb-20 ">
       <Swiper
         cssMode={true}
         navigation={true}
@@ -59,31 +59,67 @@ const Main = () => {
           />
         </SwiperSlide>
       </Swiper>
-
-      <div className="flex gap-10 justify-center mt-10">
-        <Link to="#" className="box-border h-55 w-40 bg-green-300">
-          전체보기
+      <div className="flex gap-20 justify-center mt-20 text-center pb-20">
+        <Link
+          to="#"
+          className="justify-center font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
+        >
+          {" "}
+          <img
+            src={require("../banner/icon_only_sooldamhwa.png")}
+            alt="all"
+            className="mt-9 mb-3 ml-4"
+          />
+          <p className="font-extrabold align-text-bottom mt-5 mb-3">
+            전체보기 All
+          </p>
         </Link>
-        <Link to="#" className="box-border h-55 w-40 bg-green-300">
+        <Link
+          to="#"
+          className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
+        >
+          <img
+            src={require("../banner/icon_takju.png")}
+            alt="takju"
+            className="mt-5 mb-3"
+          />
           탁주
-          <img src={require("../banner/icon_takju.png")} alt="takju" />
         </Link>
-        <Link to="#" className="box-border h-55 w-40 bg-green-300">
+        <Link
+          to="#"
+          className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
+        >
+          <img
+            src={require("../banner/icon_cheongju.png")}
+            alt="cheongju"
+            className="mt-5 mb-3"
+          />
           청주
-          <img src={require("../banner/icon_cheongju.png")} alt="cheongju" />
         </Link>
-        <Link to="#" className="box-border h-55 w-40 bg-green-300">
-          증류주
+        <Link
+          to="#"
+          className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
+        >
           <img
             src={require("../banner/icon_jeungryuju.png")}
             alt="jeungryuju"
+            className="mt-5 mb-3"
           />
+          증류주
         </Link>
-        <Link to="#" className="box-border h-55 w-40 bg-green-300">
+        <Link
+          to="#"
+          className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
+        >
+          <img
+            src={require("../banner/icon_gwashilju.png")}
+            alt="gwashilju"
+            className="mt-5 mb-3"
+          />
           과실주
-          <img src={require("../banner/icon_gwashilju.png")} alt="gwashilju" />
         </Link>
       </div>
+      <p className="border-2 border-gray-100"></p>
     </div>
   );
 };
