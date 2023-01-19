@@ -15,43 +15,49 @@ import Members from "./pages/Members";
 import { Provider } from "react-redux";
 import { store } from "./reducer/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Main from "./components/Main";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                path: "/listing/:category",
-                element: <List />,
-            },
-            {
-                path: "/detail/:product",
-                element: <Detail />,
-            },
-            {
-                path: "/login",
-                element: <LogIn />,
-            },
-            {
-                path: "/signup",
-                element: <SignUp />,
-            },
-            {
-                path: "/mypage",
-                element: <MyPage />,
-            },
-            {
-                path: "/basket",
-                element: <Basket />,
-            },
-        ],
-    },
-    {
-        path: "/members",
-        element: <Members />,
-    },
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Main />,
+      },
+      {
+        path: "listing/:category",
+        element: <List />,
+      },
+      {
+        path: "detail/:product",
+        element: <Detail />,
+      },
+      {
+        path: "login",
+        element: <LogIn />,
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+      {
+        path: "mypage",
+        element: <MyPage />,
+      },
+      {
+        path: "basket",
+        element: <Basket />,
+      },
+    ],
+  },
+  {
+    path: "/members",
+    element: <Members />,
+  },
+
 ]);
 
 const queryClient = new QueryClient();
