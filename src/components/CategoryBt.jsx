@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CategoryFilter from "./CategoryFilter";
 
-const CategoryBt = ({ name }) => {
+const CategoryBt = ({ name, option }) => {
   const [btChange, setBtChange] = useState(false);
   const [categoryOption, setCategoryOption] = useState(false);
   const handleArrowChange = () => {
@@ -26,7 +26,7 @@ const CategoryBt = ({ name }) => {
           <img className="w-5 ml-5" src="/images/arrow-down.png" alt="화살표" />
         )}
       </button>
-      {categoryOption && <CategoryFilter />}
+      {categoryOption && <CategoryFilter option={option} />}
     </div>
   );
 };
