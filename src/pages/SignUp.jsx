@@ -51,7 +51,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="p-6 m-4 shadow">
+    <div className="p-6 m-6">
       <SignUpDiv>
         <h1>회원가입</h1>
         <form>

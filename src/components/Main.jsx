@@ -6,11 +6,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Navigation, Pagination, Keyboard } from "swiper";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { all } from "axios";
 
 const Main = () => {
+  const navigate = useNavigate();
   return (
-    <div className="pb-20 ">
+    <div className="pb-10 ">
       <Swiper
         cssMode={true}
         navigation={true}
@@ -66,6 +68,7 @@ const Main = () => {
         >
           {" "}
           <img
+            onClick={navigate("/listing/all")}
             src={require("../banner/icon_only_sooldamhwa.png")}
             alt="all"
             className="mt-9 mb-3 ml-4"
@@ -79,6 +82,7 @@ const Main = () => {
           className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           <img
+            onClick={navigate("/listing/takju")}
             src={require("../banner/icon_takju.png")}
             alt="takju"
             className="mt-5 mb-3"
@@ -90,6 +94,7 @@ const Main = () => {
           className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           <img
+            onClick={navigate("/listing/cheongju")}
             src={require("../banner/icon_cheongju.png")}
             alt="cheongju"
             className="mt-5 mb-3"
@@ -101,6 +106,7 @@ const Main = () => {
           className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           <img
+            onClick={navigate("/listing/jeungryuju")}
             src={require("../banner/icon_jeungryuju.png")}
             alt="jeungryuju"
             className="mt-5 mb-3"
@@ -112,6 +118,7 @@ const Main = () => {
           className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           <img
+            onClick={navigate("/listing/gwashilju")}
             src={require("../banner/icon_gwashilju.png")}
             alt="gwashilju"
             className="mt-5 mb-3"

@@ -8,8 +8,8 @@ const LogIn = () => {
   const navigate = useNavigate();
 
   return (
-    <LoginDiv>
-      <div className="">
+    <div className="p-6 m-6">
+      <LoginDiv>
         <h1>담화마켓</h1>
         <form>
           <label>이메일</label>
@@ -36,12 +36,10 @@ const LogIn = () => {
           >
             회원가입
           </button>
-          <Link>
-            아이디/비밀번호 찾기
-          </Link>
+          <Link>아이디/비밀번호 찾기</Link>
         </form>
-      </div>
-    </LoginDiv>
+      </LoginDiv>
+    </div>
   );
 };
 
