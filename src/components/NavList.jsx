@@ -7,7 +7,7 @@ const NavList = ({ navList }) => {
   return (
     <li
       className="mr-10 font-semibold cursor-pointer"
-      onClick={() => navigate(`/${navList}`)}
+      onClick={() => navigate(`/listing/${navList}`)}
     >
       {navList}
     </li>

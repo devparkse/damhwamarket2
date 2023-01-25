@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ListItem = ({ item }) => {
+  // console.log(item);
   return (
     <div className="mt-6 mb-14 w-imgwidth">
-      <Link to="/">
+      <Link to={`/detail/${item.seq}`}>
         <div className="rounded-lg overflow-hidden">
           <img
             className="w-imgwidth rounded-lg hover:scale-110 ease-in duration-300"
-            src={item.img}
+            src={`http://192.168.0.183:8080${item.basicImg}`}
             alt="상품이미지"
           />
         </div>

@@ -13,7 +13,7 @@ const Header = () => {
     e.preventDefault();
     navigate(`listing/${text}`);
   };
-  console.log(category);
+  // console.log(category);
   useEffect(() => setText(category || ""), [category]);
   return (
     <div className="border-b-2">
