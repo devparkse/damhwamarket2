@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CategoryBt from "../components/CategoryBt";
 import ListItem from "../components/ListItem";
+import NavList from "../components/NavList";
 
 const List = () => {
   const [list, setList] = useState([
@@ -75,15 +76,15 @@ const List = () => {
     },
   ];
 
+  const navLists = ["전체보기", "탁주", "약.청주", "과실주", "증류주"];
+
   return (
     <>
       <div className="border-b">
         <ul className="flex py-2 max-w-screen-xl m-auto">
-          <li className="mr-10 font-semibold cursor-pointer">전체보기</li>
-          <li className="mr-10 font-semibold cursor-pointer">탁주</li>
-          <li className="mr-10 font-semibold cursor-pointer">약.청주</li>
-          <li className="mr-10 font-semibold cursor-pointer">과실주</li>
-          <li className="mr-10 font-semibold cursor-pointer">증류주</li>
+          {navLists.map((navList, i) => (
+            <NavList navList={navList} key={i} />
+          ))}
         </ul>
       </div>
 
