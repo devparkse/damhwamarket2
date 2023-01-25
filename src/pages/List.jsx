@@ -1,67 +1,23 @@
-import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React from "react";
 import CategoryBt from "../components/CategoryBt";
 import ListItem from "../components/ListItem";
 import NavList from "../components/NavList";
+import Spinner from "../components/Spinner";
 
 const List = () => {
-  const [list, setList] = useState([
-    {
-      img: "https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg",
-      name: "제주 동백",
-      price: "10,800원",
-      subName: "#화이트 와인 같은 산뜻함",
-      star: 4.7,
-    },
-    {
-      img: "https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg",
-      name: "sul",
-      price: 1000,
-      subName: "sulggun",
-      star: 4.7,
-    },
-    {
-      img: "https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg",
-      name: "sul",
-      price: 1000,
-      subName: "sulggun",
-      star: 4.7,
-    },
-    {
-      img: "https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg",
-      name: "sul",
-      price: 1000,
-      subName: "sulggun",
-      star: 4.7,
-    },
-    {
-      img: "https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg",
-      name: "sul",
-      price: 1000,
-      subName: "sulggun",
-      star: 4.7,
-    },
-    {
-      img: "https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg",
-      name: "sul",
-      price: 1000,
-      subName: "sulggun",
-      star: 4.7,
-    },
-    {
-      img: "https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg",
-      name: "sul",
-      price: 1000,
-      subName: "sulggun",
-      star: 4.7,
-    },
-    {
-      img: "https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/v2uF-1672974858463-1.jpg",
-      name: "sul",
-      price: 2000,
-      subName: "sulggun",
-      star: 4.7,
-    },
-  ]);
+  const {
+    isLoading,
+    error,
+    data: products,
+  } = useQuery(["products"], async () => {
+    return axios
+      .get("http://192.168.0.183:8080/api/products")
+      .then((res) => res.data.data.content);
+  });
+
+  console.log(products);
 
   const categoryBtNames = [
     { name: "도수", option: ["0%-10%", "10%-20%", "20%-30%", "30%이상"] },
@@ -100,11 +56,15 @@ const List = () => {
         </div>
       </div>
 
-      <div className="flex max-w-screen-xl m-auto flex-wrap justify-between">
-        {list.map((item, index) => (
-          <ListItem key={index} item={item} />
-        ))}
-      </div>
+      {isLoading && <Spinner />}
+      {error && <p>에러났어요</p>}
+      {products && (
+        <div className="flex max-w-screen-xl m-auto flex-wrap justify-between">
+          {products.map((item, index) => (
+            <ListItem key={index} item={item} />
+          ))}
+        </div>
+      )}
     </>
   );
 };
