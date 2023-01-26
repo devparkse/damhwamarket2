@@ -1,23 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
+import { useParams } from "react-router-dom";
 import CategoryBt from "../components/CategoryBt";
 import ListItem from "../components/ListItem";
 import NavList from "../components/NavList";
 import Spinner from "../components/Spinner";
 
 const List = () => {
+  const { category } = useParams();
+  console.log(category);
   const {
     isLoading,
     error,
     data: products,
   } = useQuery(["products"], async () => {
-    return axios
-      .get("http://192.168.0.183:8080/api/products")
-      .then((res) => res.data.data.content);
+    return (
+      axios
+        .get(`http://192.168.0.183:8080/api/products`)
+        .then((res) => res.data.data.content)
+    );
   });
-
-  console.log(products);
 
   const categoryBtNames = [
     { name: "도수", option: ["0%-10%", "10%-20%", "20%-30%", "30%이상"] },
