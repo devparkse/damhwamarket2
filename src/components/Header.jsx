@@ -17,7 +17,7 @@ const Header = () => {
   useEffect(() => setText(category || ""), [category]);
   return (
     <div className="border-b-2">
-      <div className="flex justify-around items-center mt-5 py-2 max-w-7xl mx-auto ">
+      <div className="flex justify-between items-center mt-5 py-2 max-w-7xl mx-auto ">
         <Link to="/" className="flex items-center mb-5">
           <img
             className="w-24 h-8 mr-2"

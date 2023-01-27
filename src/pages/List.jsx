@@ -9,17 +9,16 @@ import Spinner from "../components/Spinner";
 
 const List = () => {
   const { category } = useParams();
-  console.log(category);
+
   const {
     isLoading,
     error,
     data: products,
-  } = useQuery(["products"], async () => {
-    return (
-      axios
-        .get(`http://192.168.0.183:8080/api/products`)
-        .then((res) => res.data.data.content)
-    );
+  } = useQuery(["products", category], async () => {
+    return axios
+      .get(`http://192.168.0.183:8080/api/products`)
+      .then((res) => res.data.data.content)
+      .catch((err) => console.log(err));
   });
 
   const categoryBtNames = [
