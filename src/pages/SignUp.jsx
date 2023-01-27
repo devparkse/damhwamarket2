@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import SignUpDiv from "../style/signUpCss";
 
 const SignUp = () => {
-    const [signUpUser, setSingUpUser] = useState({});
+    const [signUpUser, setSignUpUser] = useState({});
     const handelChange = (e) => {
         const { name, value } = e.target;
-        setSingUpUser({ ...signUpUser, [name]: value });
+        setSignUpUser({ ...signUpUser, [name]: value });
     };
 
     return (
