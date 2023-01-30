@@ -6,8 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Navigation, Pagination, Keyboard } from "swiper";
-import { Link, useNavigate } from "react-router-dom";
-import { all } from "axios";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -63,12 +62,11 @@ const Main = () => {
       </Swiper>
       <div className="flex gap-20 justify-center mt-20 text-center pb-20">
         <Link
-          to="#"
+          to="/listing/all"
           className="justify-center font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           {" "}
           <img
-            onClick={navigate("/listing/all")}
             src={require("../banner/icon_only_sooldamhwa.png")}
             alt="all"
             className="mt-9 mb-3 ml-4"
@@ -78,11 +76,10 @@ const Main = () => {
           </p>
         </Link>
         <Link
-          to="#"
+          to="/listing/takju"
           className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           <img
-            onClick={navigate("/listing/takju")}
             src={require("../banner/icon_takju.png")}
             alt="takju"
             className="mt-5 mb-3"
@@ -90,11 +87,10 @@ const Main = () => {
           탁주
         </Link>
         <Link
-          to="#"
+          to="/listing/cheongju"
           className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           <img
-            onClick={navigate("/listing/cheongju")}
             src={require("../banner/icon_cheongju.png")}
             alt="cheongju"
             className="mt-5 mb-3"
@@ -102,11 +98,10 @@ const Main = () => {
           청주
         </Link>
         <Link
-          to="#"
+          to="/listing/jeungryuju"
           className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           <img
-            onClick={navigate("/listing/jeungryuju")}
             src={require("../banner/icon_jeungryuju.png")}
             alt="jeungryuju"
             className="mt-5 mb-3"
@@ -114,11 +109,10 @@ const Main = () => {
           증류주
         </Link>
         <Link
-          to="#"
+          to="/listing/gwashilju"
           className="font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           <img
-            onClick={navigate("/listing/gwashilju")}
             src={require("../banner/icon_gwashilju.png")}
             alt="gwashilju"
             className="mt-5 mb-3"
