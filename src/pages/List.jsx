@@ -1,15 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import CategoryBt from "../components/CategoryBt";
 import ListItem from "../components/ListItem";
 import NavList from "../components/NavList";
 import Spinner from "../components/Spinner";
+import { v4 as uuidv4 } from "uuid";
 
 const List = () => {
+  const [filter, setFilter] = useState([]);
   const { category } = useParams();
-
   const {
     isLoading,
     error,
@@ -20,21 +22,81 @@ const List = () => {
       .then((res) => res.data.data.content)
       .catch((err) => console.log(err));
   });
-
-  const categoryBtNames = [
-    { name: "도수", option: ["0%-10%", "10%-20%", "20%-30%", "30%이상"] },
-    { name: "단맛", option: ["약한", "중간", "강한"] },
-    { name: "신맛", option: ["약한", "중간", "강한"] },
-    { name: "탄산", option: ["약한", "중간", "강한"] },
-    { name: "원료", option: ["체리", "감귤류", "포도", "베리"] },
-    { name: "상황별", option: ["웃어른", "연인", "친구", "혼자"] },
+  const navLists = ["전체보기", "탁주", "약.청주", "과실주", "증류주"];
+  const [categoryBtNames, setCategoryBtNames] = useState([
+    {
+      name: "도수",
+      options: [
+        { id: uuidv4(), optionName: "0%-10%", status: "noCheck" },
+        { id: uuidv4(), optionName: "10%-20%", status: "noCheck" },
+        { id: uuidv4(), optionName: "20%-30%", status: "noCheck" },
+        { id: uuidv4(), optionName: "30%이상", status: "noCheck" },
+      ],
+    },
+    {
+      name: "단맛",
+      options: [
+        { id: uuidv4(), optionName: "약한", status: "noCheck" },
+        { id: uuidv4(), optionName: "중간", status: "noCheck" },
+        { id: uuidv4(), optionName: "강한", status: "noCheck" },
+      ],
+    },
+    {
+      name: "신맛",
+      options: [
+        { id: uuidv4(), optionName: "약한", status: "noCheck" },
+        { id: uuidv4(), optionName: "중간", status: "noCheck" },
+        { id: uuidv4(), optionName: "강한", status: "noCheck" },
+      ],
+    },
+    {
+      name: "탄산",
+      options: [
+        { id: uuidv4(), optionName: "약한", status: "noCheck" },
+        { id: uuidv4(), optionName: "중간", status: "noCheck" },
+        { id: uuidv4(), optionName: "강한", status: "noCheck" },
+      ],
+    },
+    {
+      name: "원료",
+      options: [
+        { id: uuidv4(), optionName: "체리", status: "noCheck" },
+        { id: uuidv4(), optionName: "감귤류", status: "noCheck" },
+        { id: uuidv4(), optionName: "포도", status: "noCheck" },
+        { id: uuidv4(), optionName: "베리", status: "noCheck" },
+      ],
+    },
+    {
+      name: "상황별",
+      options: [
+        { id: uuidv4(), optionName: "웃어른", status: "noCheck" },
+        { id: uuidv4(), optionName: "연인", status: "noCheck" },
+        { id: uuidv4(), optionName: "친구", status: "noCheck" },
+        { id: uuidv4(), optionName: "혼자", status: "noCheck" },
+      ],
+    },
     {
       name: "가격",
-      option: ["~ 1만원", "1만원 ~ 3만원", "3만원 ~ 5만원", "5만원 ~ 10만원"],
+      options: [
+        { id: uuidv4(), optionName: "~1만원", status: "noCheck" },
+        { id: uuidv4(), optionName: "1만원 ~ 3만원", status: "noCheck" },
+        { id: uuidv4(), optionName: "3만원 ~ 5만원", status: "noCheck" },
+        { id: uuidv4(), optionName: "5만원 ~ 10만원", status: "noCheck" },
+      ],
     },
-  ];
+  ]);
+  const statusChange = (name, id, optionName, status) => {
+    const indexName = categoryBtNames.findIndex(
+      (element) => element.name === name
+    );
+    let copy = [...categoryBtNames];
 
-  const navLists = ["전체보기", "탁주", "약.청주", "과실주", "증류주"];
+    copy[indexName].options = copy[indexName].options.map((option) => {
+      return option.id === id ? { id, optionName, status } : option;
+    });
+
+    setCategoryBtNames(copy);
+  };
 
   return (
     <>
@@ -50,14 +112,45 @@ const List = () => {
         <div className="flex py-4 max-w-screen-xl m-auto">
           {categoryBtNames.map((categoryName, i) => (
             <CategoryBt
-              name={categoryName.name}
-              option={categoryName.option}
+              categoryName={categoryName}
               key={i}
+              setFilter={setFilter}
+              filter={filter}
+              statusChange={statusChange}
             />
           ))}
         </div>
-      </div>
+        <div className="relative flex py-4 max-w-screen-xl m-auto">
+          {filter &&
+            filter.map((item, i) => (
+              <button
+                key={i}
+                id={item.id}
+                onClick={(e) => {
+                  const name =
+                    item.filterdName === "" ? item.name : item.filterdName;
+                  const id = item.id;
+                  const optionName = item.optionName;
+                  const status = item.status === "check" && "noCheck";
 
+                  statusChange(name, id, optionName, status);
+                  setFilter(filter.filter((item) => item.id !== e.target.id));
+                }}
+                className="mr-2 p-2 rounded-md bg-lime-300"
+              >
+                {`${item.filterdName} ${item.optionName}`}
+              </button>
+            ))}
+          {filter.length > 0 && (
+            <button
+              onClick={() => setFilter([])}
+              className="absolute right-0 bottom-6"
+            >
+              초기화
+            </button>
+          )}
+        </div>
+      </div>
       {isLoading && <Spinner />}
       {error && <p>에러났어요</p>}
       {products && (
