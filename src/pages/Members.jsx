@@ -80,7 +80,7 @@ const Members = () => {
           <p className="text-center">
             <img
               className="h-40 w-40 rounded-full mb-3 drop-shadow-lg"
-              src={require("../banner/members/pepe3.png")}
+              src={require("../banner/members/wavewang.png")}
               alt="b-4"
             />
             권영장
