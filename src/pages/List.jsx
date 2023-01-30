@@ -19,7 +19,7 @@ const List = () => {
   } = useQuery(["products", category], async () => {
     return axios
       .get(`http://192.168.0.183:8080/api/products`)
-      .then((res) => res.data.data.content)
+      .then((res) => res.data.content)
       .catch((err) => console.log(err));
   });
   const navLists = ["전체보기", "탁주", "약.청주", "과실주", "증류주"];

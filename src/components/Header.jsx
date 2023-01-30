@@ -29,7 +29,7 @@ const Header = () => {
         <div className="flex items-center w-1/2 relative mb-5">
           <form className="w-full" action="" onSubmit={handleSubmit}>
             <input
-              className="w-full h-8 bg-slate-200 rounded"
+              className="w-full h-8 bg-slate-200 rounded focus:outline-none"
               type="text"
               value={text}
               onChange={handleChange}
