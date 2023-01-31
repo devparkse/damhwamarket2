@@ -62,6 +62,7 @@ const Main = () => {
       <div className="flex gap-20 justify-center mt-20 text-center pb-20">
         <Link
           to="/listing/all"
+          to="/listing/전체보기"
           className="justify-center font-semibold text-xl box-border rounded-md h-60 w-40 hover:bg-gray-100"
         >
           {" "}
