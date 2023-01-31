@@ -13,7 +13,7 @@ const Footer = () => {
             평일 10:00 - 18:00, 주말 휴무
             <div>
               <b>
-                <Link to>이용약관</Link>&nbsp; <Link to> 개인정보처리방침</Link>{" "}
+                <Link to>이용약관</Link>&nbsp; <Link to>개인정보처리방침</Link>{" "}
                 &nbsp;
                 <Link>입점문의</Link>
               </b>

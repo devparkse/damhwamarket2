@@ -6,10 +6,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Navigation, Pagination, Keyboard } from "swiper";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Main = () => {
-  const navigate = useNavigate();
   return (
     <div className="pb-10 ">
       <Swiper
