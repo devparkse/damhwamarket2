@@ -16,7 +16,7 @@ const Main = () => {
         navigation={true}
         slidesPerView={1}
         spaceBetween={0}
-        // loop={true}
+        loop={true}
         pagination={{
           clickable: true,
         }}

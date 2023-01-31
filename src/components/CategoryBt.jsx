@@ -45,7 +45,7 @@ const CategoryBt = ({ categoryName, filter, setFilter, statusChange }) => {
       {categoryOptionActive && (
         <div ref={modalRef}>
           <div className="w-filterwidth absolute top-12 left-0 z-10">
-            <div className="flex flex-wrap justify-between rounded-lg bg-yellow-200 py-4 px-5">
+            <div className="flex flex-wrap justify-between rounded-lg bg-white drop-shadow-lg border py-4 px-5">
               {options.map((option, i) => (
                 <CategoryFilter
                   option={option}
