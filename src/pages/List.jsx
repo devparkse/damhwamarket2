@@ -143,7 +143,18 @@ const List = () => {
             ))}
           {filter.length > 0 && (
             <button
-              onClick={() => setFilter([])}
+              onClick={() => {
+                setFilter([]);
+                setCategoryBtNames((prev) =>
+                  prev.map((item) => ({
+                    ...item,
+                    options: item.options.map((item1) => ({
+                      ...item1,
+                      status: "noCheck",
+                    })),
+                  }))
+                );
+              }}
               className="absolute right-0 bottom-6"
             >
               초기화
