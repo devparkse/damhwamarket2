@@ -20,18 +20,25 @@ module.exports = {
         filterwidth: "350px",
         leftwidth: "645px",
         rightwidth: "300px",
+        buttonwidth: "135px",
       },
       colors: {
         blue: "#3395ed",
       },
-      fontWeight: {
-        fw800: 800,
-      },
       fontSize: {
+        fs10: "10px",
+        fs11: "11px",
+        fs13: "13px",
         fs15: "15px",
       },
       spacing: {
         "84px": "84px",
+      },
+      lineHeight: {
+        44: "44px",
+      },
+      backgroundImage: {
+        "gift-bg": "url('/public/images/gift-tooltip.png')",
       },
     },
   },

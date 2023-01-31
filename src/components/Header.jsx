@@ -3,6 +3,7 @@ import { GoSearch } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+
     const [text, setText] = useState("");
     const navigate = useNavigate();
     const handleChange = (e) => {
@@ -40,6 +41,7 @@ const Header = () => {
                     <Link to="/login" className="mr-2">
                         로그인
                     </Link>
+
 
                     <Link to="/basket">
                         <img

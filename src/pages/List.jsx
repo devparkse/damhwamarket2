@@ -10,6 +10,7 @@ import Spinner from "../components/Spinner";
 import { v4 as uuidv4 } from "uuid";
 
 const List = () => {
+
     const [filter, setFilter] = useState([]);
     const { category } = useParams();
     const {
@@ -20,11 +21,12 @@ const List = () => {
         return axios
             .get(
                 category === "전체보기"
-                    ? `http://192.168.0.183:8080/api/products`
-                    : `http://192.168.0.183:8080/api/products/search?keyword=${category}`
+                    ? `http://192.168.0.203:8080/api/products`
+                    : `http://192.168.0.203:8080/api/products/search?keyword=${category}`
             )
             .then((res) => res.data.content)
             .catch((err) => console.log(err));
+
     });
     const navLists = ["전체보기", "탁주", "약.청주", "과실주", "증류주"];
     const [categoryBtNames, setCategoryBtNames] = useState([
@@ -152,51 +154,48 @@ const List = () => {
                                     const status =
                                         item.status === "check" && "noCheck";
 
-                                    statusChange(name, id, optionName, status);
-                                    setFilter(
-                                        filter.filter(
-                                            (item) => item.id !== e.target.id
-                                        )
-                                    );
-                                }}
-                                className="mr-2 p-2 rounded-md bg-lime-300"
-                            >
-                                {`${item.filterdName} ${item.optionName}`}
-                            </button>
-                        ))}
-                    {filter.length > 0 && (
-                        <button
-                            onClick={() => {
-                                setFilter([]);
-                                // setCategoryBtNames(
-                                //   let copy =  [...categoryBtNames]
 
-                                //   (prev) =>
-                                //     prev.map((item) =>
-                                //         item.options.map(
-                                //             (t) => (t.status = "noCheck")
-                                //         )
-                                //     )
-                                // );
-                            }}
-                            className="absolute right-0 bottom-6"
-                        >
-                            초기화
-                        </button>
-                    )}
-                </div>
-            </div>
-            {isLoading && <Spinner />}
-            {error && <p>에러났어요</p>}
-            {products && (
-                <div className="flex max-w-screen-xl m-auto flex-wrap justify-between">
-                    {products.map((item, index) => (
-                        <ListItem key={index} item={item} />
-                    ))}
-                </div>
-            )}
-        </>
-    );
+                  statusChange(name, id, optionName, status);
+                  setFilter(filter.filter((item) => item.id !== e.target.id));
+                }}
+                className="mr-2 p-2 rounded-md bg-lime-300"
+              >
+                {`${item.filterdName} ${item.optionName}`}
+              </button>
+            ))}
+          {filter.length > 0 && (
+            <button
+              onClick={() => {
+                setFilter([]);
+                setCategoryBtNames((prev) =>
+                  prev.map((item) => ({
+                    ...item,
+                    options: item.options.map((item1) => ({
+                      ...item1,
+                      status: "noCheck",
+                    })),
+                  }))
+                );
+              }}
+              className="absolute right-0 bottom-6"
+            >
+              초기화
+            </button>
+          )}
+        </div>
+      </div>
+      {isLoading && <Spinner />}
+      {error && <p>에러났어요</p>}
+      {products && (
+        <div className="flex max-w-screen-xl m-auto flex-wrap justify-between">
+          {products.map((item, index) => (
+            <ListItem key={index} item={item} />
+          ))}
+        </div>
+      )}
+    </>
+  );
+
 };
 
 export default List;
