@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import CategoryBt from "../components/CategoryBt";
@@ -21,7 +21,7 @@ const List = () => {
       .get(
         category === "전체보기"
           ? `http://192.168.0.203:8080/api/products`
-          : `http://192.168.0.203:8080/api/products/search?keyword=${category}`
+          : `http://192.168.0.203:8080/api/products?keyword=${category}`
       )
       .then((res) => res.data.content)
       .catch((err) => console.log(err));
@@ -114,6 +114,10 @@ const List = () => {
     setCategoryBtNames(copy);
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <>
       <div className="border-b">
@@ -181,7 +185,7 @@ const List = () => {
       {isLoading && <Spinner />}
       {error && <p>에러났어요</p>}
       {products && (
-        <div className="flex max-w-screen-xl m-auto flex-wrap justify-between">
+        <div className="grid grid-cols-4 max-w-screen-xl m-auto">
           {products.map((item, index) => (
             <ListItem key={index} item={item} />
           ))}
