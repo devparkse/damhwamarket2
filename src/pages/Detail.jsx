@@ -6,6 +6,7 @@ import Review from "../components/Review";
 import Spinner from "../components/Spinner";
 
 const Detail = () => {
+
   const { productId } = useParams();
   // console.log(productId);
   const {
@@ -14,13 +15,13 @@ const Detail = () => {
     data: productDetail,
   } = useQuery(["products", "detail"], async () => {
     return axios
-      .get(`http://192.168.0.183:8080/api/products/${productId}`)
+      .get(`http://192.168.0.203:8080/api/products/${productId}`)
       .then((res) => res.data.data)
       .catch((err) => console.log(err));
   });
   const { data: reviews } = useQuery(["products", "review"], async () => {
     return axios
-      .get(`http://192.168.0.183:8080/api/reviews/${productId}`)
+      .get(`http://192.168.0.203:8080/api/reviews/${productId}`)
       .then((res) => res.data.data)
       .catch((err) => console.log(err));
   });
@@ -43,7 +44,7 @@ const Detail = () => {
             <div className="flex gap-6 mb-24">
               <img
                 className="w-72 h-96"
-                src={`http://192.168.0.183:8080${productDetail.thumbImg}`}
+                src={`http://192.168.0.203:8080${productDetail.thumbImg}`}
                 alt="상품이미지"
               />
               <div className="text-start">
@@ -86,7 +87,7 @@ const Detail = () => {
             <div>
               <img
                 className="w-full h-full mb-12"
-                src={`http://192.168.0.183:8080${productDetail.detailImg}`}
+                src={`http://192.168.0.203:8080${productDetail.detailImg}`}
                 alt=""
               />
               <p className="mb-24 text-left">{productDetail.detailContent}</p>
@@ -181,6 +182,7 @@ const Detail = () => {
       )}
     </>
   );
+
 };
 
 export default Detail;
