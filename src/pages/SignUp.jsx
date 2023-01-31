@@ -22,7 +22,7 @@ const SignUp = () => {
         };
         axios
             .post("http://192.168.0.203:8080/api/users/join", body)
-            .then((res) => console.log("성공"))
+            .then((res) => res.data)
             .catch(console.log("실패"));
     };
     console.log(signUpUser);
