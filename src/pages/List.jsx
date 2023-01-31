@@ -18,7 +18,7 @@ const List = () => {
     data: products,
   } = useQuery(["products", category], async () => {
     return axios
-      .get(`http://192.168.0.183:8080/api/products`)
+      .get(`http://192.168.0.203:8080/api/products`)
       .then((res) => res.data.content)
       .catch((err) => console.log(err));
   });
