@@ -8,6 +8,7 @@ const SignUp = () => {
         const { name, value } = e.target;
         setSignUpUser({ ...signUpUser, [name]: value });
     };
+    console.log(signUpUser);
     const handleSubmit = async (e) => {
         e.preventDefault();
         const body = {
@@ -20,7 +21,7 @@ const SignUp = () => {
             address: signUpUser.address,
         };
         axios
-            .post("http://192.168.0.183:8080/api/users/join", body)
+            .post("http://192.168.0.203:8080/api/users/join", body)
             .then((res) => console.log("성공"))
             .catch(console.log("실패"));
     };
