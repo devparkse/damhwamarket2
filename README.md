@@ -15,7 +15,6 @@
 ![visualcode](https://img.shields.io/badge/visualstudiocode-blue.svg?style=for-the-badge&logo=visualstudiocode&logoColor=white&logoWidth=20) <br/>
 ![react](https://img.shields.io/badge/react-61DAFB.svg?style=for-the-badge&logo=react&logoColor=white&logoWidth=20)<br/>
 ![JavaScript](https://img.shields.io/badge/javascript-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=white)<br/>
-![Notion](https://img.shields.io/badge/notion-000000.svg?style=for-the-badge&logo=notion&logoColor=white&link={https://tourmaline-atlasaurus-77b.notion.site/FB-1-50dbb3df74e040c394809ad8e97b4927})
-link(https://tourmaline-atlasaurus-77b.notion.site/FB-1-50dbb3df74e040c394809ad8e97b4927)
+[![Notion](https://img.shields.io/badge/notion-000000.svg?style=for-the-badge&logo=notion&logoColor=white&link={(https://tourmaline-atlasaurus-77b.notion.site/FB-1-50dbb3df74e040c394809ad8e97b4927)})]({https://tourmaline-atlasaurus-77b.notion.site/FB-1-50dbb3df74e040c394809ad8e97b4927})
 ## Back
 
