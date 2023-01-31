@@ -1,11 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Review from "../components/Review";
 import Spinner from "../components/Spinner";
 
 const Detail = () => {
+  const [isShown, setIsShown] = useState(true);
+  const [x, setX] = useState(1);
+
   const { productId } = useParams();
   // console.log(productId);
   const {
@@ -25,13 +29,21 @@ const Detail = () => {
       .catch((err) => console.log(err));
   });
   // console.log(reviews);
-  console.log(productDetail);
-
-  const [isShown, setIsShown] = useState(true);
+  // console.log(productDetail);
 
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
+
+  const handlePlus = () => setX(x + 1);
+  const handleMinus = () => {
+    if (x === 1) return;
+    setX(x - 1);
+  };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <>
@@ -61,7 +73,11 @@ const Detail = () => {
                   도수: {productDetail.level.toFixed(2)}%
                 </p>
                 <p className="text-sm font-extrabold text-zinc-600 mb-2">
-                  용량: {productDetail.options[0].name.slice(1, 6)} 등
+                  용량:{" "}
+                  {productDetail &&
+                    productDetail.options.map((option) => {
+                      return option.name.length;
+                    })}
                 </p>
                 <p className="text-sm font-extrabold text-zinc-400 mb-8">
                   배송기간: 2일 이내 배송
@@ -101,25 +117,57 @@ const Detail = () => {
                 reviews.map((review, i) => <Review key={i} review={review} />)}
             </ul>
           </div>
+
           <div className="fixed right-1/4 top-28 w-rightwidth">
             <div
               className="flex flex-col py-7 px-2.5 items-start w-full border shadow-lg rounded-lg"
               style={{ height: isShown ? "585px" : "543px" }}
             >
               <label className="mb-2.5 text-fs15 font-extrabold">옵션</label>
-              <select className="mb-6 w-full h-11 pr border rounded-sm text-xs text-center focus:outline-none">
+              <select
+                className="mb-6 w-full h-11 pr border rounded-sm text-xs text-center focus:outline-none"
+                onChange={(e) => console.log(e.target.value)}
+              >
                 <option className="text-sm">어떤 옵션을 원하시나요?</option>
-                <option>{productDetail.options[0].name}</option>
+                {productDetail.options.map((option) => (
+                  <option>{option.name}</option>
+                ))}
               </select>
 
               <label className="mb-3 text-fs15 font-extrabold">수량</label>
-              <span className="w-full h-11 mb-6 border rounded-sm text-xs font-extrabold text-center leading-44"></span>
+              <div className="flex items-center justify-center w-full h-11 mb-6 border rounded-sm text-xs font-extrabold text-center leading-44">
+                <div className="flex w-full items-center justify-center">
+                  <img
+                    src="/images/icon-minus.png"
+                    alt="마이너스"
+                    className="w-6 h-6 cursor-pointer"
+                    onClick={handleMinus}
+                  />
+                </div>
+
+                <input
+                  value={x}
+                  type="text"
+                  className="w-full h-full text-center pl-7 pr-7 border-x text-sm text-zinc-600 focus:outline-none"
+                />
+
+                <div className="flex w-full items-center justify-center">
+                  <img
+                    src="/images/icon-plus.png"
+                    alt="플러스"
+                    className="w-6 h-6 cursor-pointer"
+                    onClick={handlePlus}
+                  />
+                </div>
+              </div>
 
               <label className="mb-3 text-fs15 font-extrabold">
                 총 상품가격
               </label>
               <span className="w-full h-11 mb-6 border rounded-sm text-xs font-extrabold text-center leading-44">
-                0원
+                {productDetail.options[0].price *
+                  x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                원
               </span>
 
               <div
