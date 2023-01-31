@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import SignUpDiv from "../style/signUpCss";
 
@@ -7,12 +8,29 @@ const SignUp = () => {
         const { name, value } = e.target;
         setSignUpUser({ ...signUpUser, [name]: value });
     };
-
+    console.log(signUpUser);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const body = {
+            name: signUpUser.name,
+            email: signUpUser.email,
+            pwd: signUpUser.pwd,
+            nickname: signUpUser.nickname,
+            birth: signUpUser.birth,
+            phone: signUpUser.phone,
+            address: signUpUser.address,
+        };
+        axios
+            .post("http://192.168.0.203:8080/api/users/join", body)
+            .then((res) => console.log("성공"))
+            .catch(console.log("실패"));
+    };
+    console.log(signUpUser);
     return (
         <div className="p-6 m-6">
             <SignUpDiv>
                 <h1>회원가입</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label>이름</label>
                     <input
                         type="text"

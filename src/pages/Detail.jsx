@@ -6,6 +6,7 @@ import Review from "../components/Review";
 import Spinner from "../components/Spinner";
 
 const Detail = () => {
+
   const { productId } = useParams();
   // console.log(productId);
   const {
@@ -181,6 +182,7 @@ const Detail = () => {
       )}
     </>
   );
+
 };
 
 export default Detail;
