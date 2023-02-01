@@ -1,49 +1,65 @@
 import axios from "axios";
 import React, { useState } from "react";
-import SignUpDiv from "../style/signUpCss";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
+import LoginDiv from "../style/loginCss";
 
-const SignUp = () => {
-    const [signUpUser, setSignUpUser] = useState({});
+const LogIn = () => {
+    const { user, setUser, Authorization } = useAuthContext();
+    const navigate = useNavigate();
+    const [loginUser, setLoginUser] = useState({});
     const handelChange = (e) => {
         const { name, value } = e.target;
-        setSignUpUser({ ...signUpUser, [name]: value });
+        setLoginUser({ ...loginUser, [name]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const body = {
-            name: signUpUser.name,
-            email: signUpUser.email,
-            pwd: signUpUser.pwd,
-            nickname: signUpUser.nickname,
-            birth: signUpUser.birth,
-            phone: signUpUser.phone,
-            address: signUpUser.address,
+            email: loginUser.email,
+            pwd: loginUser.pwd,
         };
-        axios
-            .post("http://192.168.0.203:8080/api/users/join", body)
-            .then((res) => res.data)
-            .catch(console.log("실패"));
-    };
 
+        axios
+            .post("http://192.168.0.203:8080/api/users/login", body)
+            .then((res) => setUser(res.data))
+            .then((err) => console.log(err));
+    };
+    console.log(user);
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+
+        const body = {
+            pwd: loginUser.pwd,
+            nickname: "승현연습",
+            address: "zzz",
+        };
+        const header = {
+            headers: {
+                Authorization,
+            },
+        };
+
+        axios
+            .put(
+                "http://192.168.0.203:8080/api/users/login/update",
+                body,
+                header
+            )
+            .then((res) => console.log(res.data))
+            .then((err) => console.log(err));
+    };
+    // console.log(loginUser);
     return (
         <div className="p-6 m-6">
-            <SignUpDiv>
-                <h1>회원가입</h1>
+            <LoginDiv>
+                <h1>담화마켓</h1>
                 <form onSubmit={handleSubmit}>
-                    <label>이름</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={signUpUser.name}
-                        onChange={handelChange}
-                        required
-                    />
                     <label>이메일</label>
                     <input
                         type="email"
                         name="email"
-                        value={signUpUser.email}
+                        value={loginUser.email}
                         onChange={handelChange}
                         required
                     />
@@ -51,47 +67,25 @@ const SignUp = () => {
                     <input
                         type="password"
                         name="pwd"
-                        value={signUpUser.pwd}
+                        value={loginUser.password}
                         onChange={handelChange}
                         required
                     />
-                    <label>닉네임</label>
-                    <input
-                        type="text"
-                        name="nickname"
-                        value={signUpUser.nickname}
-                        onChange={handelChange}
-                        required
-                    />
-                    <label>생년월일</label>
-                    <input
-                        type="date"
-                        name="birth"
-                        value={signUpUser.birth}
-                        onChange={handelChange}
-                        required
-                    />
-                    <label>휴대폰 번호</label>
-                    <input
-                        type="tel"
-                        name="phone"
-                        value={signUpUser.phone}
-                        onChange={handelChange}
-                        required
-                    />
-                    <label>주소</label>
-                    <input
-                        type="local"
-                        name="address"
-                        value={signUpUser.address}
-                        onChange={handelChange}
-                        required
-                    />
-                    <button>회원가입</button>
+                    <button>로그인</button>
+                    <button
+                        onClick={(event) => {
+                            event.preventDefault();
+                            navigate("/signup");
+                        }}
+                    >
+                        회원가입
+                    </button>
+                    <Link>아이디/비밀번호 찾기</Link>
                 </form>
-            </SignUpDiv>
+                <button onClick={handleUpdate}>정보수정</button>
+            </LoginDiv>
         </div>
     );
 };
 
-export default SignUp;
+export default LogIn;

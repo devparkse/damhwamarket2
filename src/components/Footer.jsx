@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="flex ml-10 my-10">
-      <footer className="footer">
+    <div className="border-2 border-gray-200">
+      <footer className="footer flex ml-10 my-10 ">
         <div className="grid wrapper">
           <b className="text-lg"> 별별컴퍼니 주식회사 </b>
           <br />
@@ -13,7 +13,7 @@ const Footer = () => {
             평일 10:00 - 18:00, 주말 휴무
             <div>
               <b>
-                <Link to>이용약관</Link>&nbsp; <Link to> 개인정보처리방침</Link>{" "}
+                <Link to>이용약관</Link>&nbsp; <Link to>개인정보처리방침</Link>{" "}
                 &nbsp;
                 <Link>입점문의</Link>
               </b>
