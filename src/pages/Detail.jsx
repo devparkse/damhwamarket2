@@ -76,7 +76,8 @@ const Detail = () => {
                   용량:{" "}
                   {productDetail &&
                     productDetail.options.map((option) => {
-                      return option.name.length;
+                      const last = option.name.indexOf("l") + 1;
+                      return option.name.slice(1, last);
                     })}
                 </p>
                 <p className="text-sm font-extrabold text-zinc-400 mb-8">
