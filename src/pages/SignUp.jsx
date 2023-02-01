@@ -8,7 +8,7 @@ const SignUp = () => {
         const { name, value } = e.target;
         setSignUpUser({ ...signUpUser, [name]: value });
     };
-    console.log(signUpUser);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const body = {
@@ -25,7 +25,7 @@ const SignUp = () => {
             .then((res) => res.data)
             .catch(console.log("실패"));
     };
-    console.log(signUpUser);
+
     return (
         <div className="p-6 m-6">
             <SignUpDiv>
