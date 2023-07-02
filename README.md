@@ -1,4 +1,5 @@
 # 담화마켓 프로젝트(머지 오류로 인한 초기 버전)
+Front-end (React) & Back-end (Spring-Boot) 협업 1차 팀프로젝트
 
 ## Project 기획
 
